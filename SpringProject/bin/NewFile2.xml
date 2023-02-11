@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- <bean id="mobile" class="Basics.Mobile"> <property name="sim"> <bean 
+		id="airObj" class="Basics.Airtel"></bean> </property> </bean> <bean id="advmobile" 
+		class="Basics.AdvMobile"> <property name="sim"> <bean id="airObj" class="Basics.Airtel"></bean> 
+		</property> </bean> -->
+
+	<bean id="airObj" class="Basics.Airtel"/>
+
+	<bean id="mobile" class="Basics.Mobile">
+		<property name="sim" ref="airObj"/>
+	</bean>
+	
+	<bean id="advmobile" class="Basics.AdvMobile">
+		<property name="sim" ref="airObj"/>
+	</bean> 
+</beans>

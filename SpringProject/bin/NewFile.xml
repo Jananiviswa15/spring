@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 1. setter inj 2. consnstr -->
+	<!-- setter Inj -->
+
+	<bean id="obj" class="Basics.Benz">
+		<property name="price" value="56000"></property>
+		<property name="model" value="classic"></property>
+	</bean>
+	
+	<bean id="obj1" class="Basics.Benz">
+		<property name="price" value="56000"></property>
+	</bean>
+<!-- constr inj -->
+
+<bean id = "obj2" class="Basics.Benz">
+<constructor-arg name = "price" value = "34500"></constructor-arg>
+<constructor-arg name="model" value = "high end"></constructor-arg>
+</bean>
+
+<bean id = "obj3" class="Basics.Benz">
+<constructor-arg name = "price" value = "45500" type = "int"></constructor-arg>
+<constructor-arg name="model" value = "basic" ></constructor-arg>
+<constructor-arg name = "isEv" value = "true"></constructor-arg>
+</bean>
+
+
+</beans>

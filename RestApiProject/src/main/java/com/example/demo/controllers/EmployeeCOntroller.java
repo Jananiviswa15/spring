@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,8 +42,26 @@ public class EmployeeCOntroller {
 	}
 	
 	
+	@PutMapping("/updateEmp/{empId}")
+	public ResponseEntity<Employee> updateEmpDetailsById(@PathVariable("empId") int id,
+			@RequestBody Employee emp){
+		return new ResponseEntity<Employee>(empServ.updateEmpDetails(emp, id), HttpStatus.OK);
+		
+	}
 	@GetMapping("/readAllEmp")
 	public List<Employee> getAllEmps(){
 		return empServ.getEmpsFromDb();
+	}
+	
+	//localhost:8080/readEmp/5
+	@GetMapping("/readEmp/{id}")
+	public ResponseEntity<Employee>  getEmployeeById(@PathVariable("id")  int empId){
+		return new ResponseEntity<Employee>(empServ.getEmployeeById(empId), HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/deleteEmp/{id}")
+	public ResponseEntity<String> deleteEmployeeById(@PathVariable("id")  int empId){
+		empServ.deleteEmpById(empId);
+		return new ResponseEntity<String>("deleted successfully", HttpStatus.OK);
 	}
 }

@@ -7,6 +7,7 @@ import com.example.demo.model.Employee;
 
 
 //whenevr i interact with db // @REPOSITORY
+@Repository
 public interface EmployeeRepo extends JpaRepository<Employee, Integer> {
 	
 
